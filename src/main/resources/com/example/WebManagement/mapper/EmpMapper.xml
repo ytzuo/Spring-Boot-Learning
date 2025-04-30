@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.WebManagement.mapper.EmpMapper">
+    <select id="list" resultType="com.example.WebManagement.pojo.Emp">
+        SELECT *
+        FROM emp
+        <where>
+            <if test="name != null">
+                name LIKE CONCAT('%', #{name}, '%')
+            </if>
+            <if test="gender != null">
+                AND gender = #{gender}
+            </if>
+        </where>
+        ORDER BY id
+    </select>
+</mapper>
